@@ -1,0 +1,26 @@
+.container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #050505;
+    /* Deep Rich Black */
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logoWrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    border-radius: 50%;
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+    /* Gold glow */
+}

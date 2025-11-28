@@ -1,0 +1,117 @@
+.hero {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    /* Background image removed in favor of video */
+    display: flex;
+    align-items: center;
+    color: #fff;
+    overflow: hidden;
+}
+
+.videoBackground {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 0;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6));
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    max-width: 800px;
+}
+
+.title {
+    font-size: 4rem;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    animation: fadeUp 1s ease 0.5s backwards;
+    background: linear-gradient(to right, #D4AF37, #FFF8DC, #D4AF37);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    background-size: 200% auto;
+    animation: shine 5s linear infinite, fadeUp 1s ease 0.5s backwards;
+}
+
+.highlight {
+    color: inherit;
+    /* Inherit gradient */
+    font-style: italic;
+}
+
+.subtitle {
+    font-size: 1.25rem;
+    margin-bottom: 2.5rem;
+    opacity: 0.9;
+    animation: fadeUp 1s ease 0.7s backwards;
+    background: linear-gradient(to right, #FFF8DC, #D4AF37, #FFF8DC);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    background-size: 200% auto;
+    animation: shine 5s linear infinite reverse, fadeUp 1s ease 0.7s backwards;
+}
+
+@keyframes shine {
+    to {
+        background-position: 200% center;
+    }
+}
+
+.actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    animation: fadeUp 1s ease 0.9s backwards;
+}
+
+.secondaryBtn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid #fff;
+    color: #fff;
+}
+
+.secondaryBtn:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 2.5rem;
+    }
+}
