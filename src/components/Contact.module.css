@@ -78,9 +78,78 @@
     border-color: var(--primary-gold);
 }
 
+
+.googleBadge {
+    margin-top: 2rem;
+    padding: 1.25rem;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    border-radius: 12px;
+    border: 1px solid #e8eaed;
+    box-shadow: 0 1px 3px rgba(60, 64, 67, 0.1), 0 4px 8px rgba(60, 64, 67, 0.05);
+    transition: all 0.3s ease;
+}
+
+.googleBadge:hover {
+    box-shadow: 0 2px 6px rgba(60, 64, 67, 0.15), 0 8px 16px rgba(60, 64, 67, 0.1);
+    transform: translateY(-2px);
+}
+
+.googleLogo {
+    height: 24px;
+    margin-bottom: 0.875rem;
+    display: block;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.ratingNumber {
+    font-size: 2.25rem;
+    font-weight: 500;
+    color: #1a73e8;
+    line-height: 1;
+}
+
+.stars {
+    color: #fbbc04;
+    font-size: 1.25rem;
+    line-height: 1;
+    letter-spacing: 2px;
+}
+
+.reviewLink {
+    color: #5f6368;
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition: all 0.2s ease;
+    padding: 0.25rem 0;
+    border-bottom: 1px solid transparent;
+}
+
+.reviewLink:hover {
+    color: #1a73e8;
+    border-bottom-color: #1a73e8;
+}
+
 @media (max-width: 768px) {
     .content {
         grid-template-columns: 1fr;
         gap: 2rem;
+    }
+
+    .rating {
+        gap: 0.375rem;
+    }
+
+    .googleBadge {
+        padding: 1rem;
+    }
+
+    .ratingNumber {
+        font-size: 1.875rem;
     }
 }

@@ -14,13 +14,13 @@ export default function About() {
                 <div className={styles.profiles}>
                     <div className={styles.card}>
                         <div className={styles.imageWrapper}>
-                            {/* Placeholder for Priyank Gupta */}
+                            {/* Placeholder for Priyanka Gupta */}
                             <div style={{ width: '100%', height: '100%', background: '#eee' }}></div>
                         </div>
-                        <h3 className={styles.name}>Priyank Gupta</h3>
+                        <h3 className={styles.name}>Priyanka Gupta</h3>
                         <div className={styles.role}>Co-Founder</div>
                         <p className={styles.bio}>
-                            With a keen eye for detail and a heart full of creativity, Priyank brings visionary designs to life.
+                            With a keen eye for detail and a heart full of creativity, Priyanka brings visionary designs to life.
                             Her dedication to crafting unforgettable experiences is the soul of Naykaa.
                         </p>
                     </div>

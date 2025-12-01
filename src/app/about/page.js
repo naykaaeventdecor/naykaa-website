@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Image from "next/image";
 import styles from "./about.module.css";
 
 export default function AboutPage() {
@@ -28,21 +29,31 @@ export default function AboutPage() {
                     <div className={styles.profiles}>
                         <div className={styles.card}>
                             <div className={styles.imageWrapper}>
-                                {/* Placeholder for Priyank Gupta */}
-                                <div style={{ width: '100%', height: '100%', background: '#eee' }}></div>
+                                <Image
+                                    src="/priyanka.png"
+                                    alt="Priyanka Gupta"
+                                    width={150}
+                                    height={150}
+                                    className={styles.image}
+                                />
                             </div>
-                            <h3 className={styles.name}>Priyank Gupta</h3>
+                            <h3 className={styles.name}>Priyanka Gupta</h3>
                             <div className={styles.role}>Co-Founder</div>
                             <p className={styles.bio}>
-                                With a keen eye for detail and a heart full of creativity, Priyank brings visionary designs to life.
+                                With a keen eye for detail and a heart full of creativity, Priyanka brings visionary designs to life.
                                 Her dedication to crafting unforgettable experiences is the soul of Naykaa.
                             </p>
                         </div>
 
                         <div className={styles.card}>
                             <div className={styles.imageWrapper}>
-                                {/* Placeholder for Neha Takola */}
-                                <div style={{ width: '100%', height: '100%', background: '#eee' }}></div>
+                                <Image
+                                    src="/neha.png"
+                                    alt="Neha Takola"
+                                    width={150}
+                                    height={150}
+                                    className={styles.image}
+                                />
                             </div>
                             <h3 className={styles.name}>Neha Takola</h3>
                             <div className={styles.role}>Co-Founder</div>
