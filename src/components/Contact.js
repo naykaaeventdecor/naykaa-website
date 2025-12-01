@@ -74,8 +74,24 @@ export default function Contact() {
                         <p>Ready to plan your dream event? Reach out to us!</p>
                         <ul className={styles.list}>
                             <li>📍 Novi, MI</li>
-                            <li>📞 +1 (248) 325-8885</li>
-                            <li>✉️ NaykaaEventDecor@gmail.com</li>
+                            <li>
+                                📞 <a
+                                    href="tel:+12483258885"
+                                    className={styles.contactLink}
+                                    aria-label="Call Naykaa Event and Decor"
+                                >
+                                    +1 (248) 325-8885
+                                </a>
+                            </li>
+                            <li>
+                                ✉️ <a
+                                    href="mailto:NaykaaEventDecor@gmail.com"
+                                    className={styles.contactLink}
+                                    aria-label="Email Naykaa Event and Decor"
+                                >
+                                    NaykaaEventDecor@gmail.com
+                                </a>
+                            </li>
                         </ul>
 
                         {/* Google Rating Badge */}
@@ -86,19 +102,19 @@ export default function Contact() {
                                 className={styles.googleLogo}
                             />
                             <div className={styles.rating}>
-                                <div className={styles.ratingNumber}>5.0</div>
+                                <div className={styles.ratingNumber}>4.9</div>
                                 <div className={styles.stars}>
                                     {[...Array(5)].map((_, i) => (
                                         <span key={i}>★</span>
                                     ))}
                                 </div>
                                 <a
-                                    href="https://www.google.com/search?q=Naykaa+Event+and+Decor"
+                                    href="https://maps.app.goo.gl/MzN7RHS2T7q81akn9"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className={styles.reviewLink}
                                 >
-                                    Based on 12 reviews
+                                    Based on 19 reviews
                                 </a>
                             </div>
                         </div>

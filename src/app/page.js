@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import IntroAnimation from "@/components/IntroAnimation";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
@@ -12,14 +12,29 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   const [animationStarted, setAnimationStarted] = useState(false);
+  const [shouldShowIntro, setShouldShowIntro] = useState(true);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const hasSeenIntro = window.sessionStorage.getItem("introShown") === "true";
+
+    if (hasSeenIntro) {
+      setAnimationStarted(true);
+      setShouldShowIntro(false);
+    }
+  }, []);
 
   const handleAnimationStart = () => {
+    if (typeof window !== "undefined") {
+      window.sessionStorage.setItem("introShown", "true");
+    }
     setAnimationStarted(true);
+    setShouldShowIntro(false);
   };
 
   return (
     <main>
-      <IntroAnimation onAnimationStart={handleAnimationStart} />
+      {shouldShowIntro && <IntroAnimation onAnimationStart={handleAnimationStart} />}
       <Header />
       <div style={{
         opacity: animationStarted ? 1 : 0,
