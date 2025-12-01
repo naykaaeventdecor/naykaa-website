@@ -28,8 +28,8 @@ const reviews = [
     }
 ];
 
-const overallRating = 5.0;
-const totalReviews = 12;
+const overallRating = 4.9;
+const totalReviews = 19;
 
 export default function GoogleReviews() {
     const renderStars = (rating) => {
