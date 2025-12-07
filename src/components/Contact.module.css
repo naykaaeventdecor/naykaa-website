@@ -15,6 +15,19 @@
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
     align-items: start;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.textSection {
+    padding-top: 1rem;
+}
+
+.description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 1.5rem;
 }
 
 .subheading {

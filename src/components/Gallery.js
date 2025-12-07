@@ -1,12 +1,16 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import styles from "./Gallery.module.css";
 
 export default function Gallery() {
     const [images, setImages] = useState([]);
     const [isHovered, setIsHovered] = useState(false);
+
+    // Touch handling refs
+    const touchStart = useRef(0);
+    const lastTouch = useRef(0);
 
     // Animation refs
     const trackRef = useRef(null);
@@ -30,34 +34,42 @@ export default function Gallery() {
         fetchImages();
     }, []);
 
-    const animate = useCallback(() => {
-        if (!trackRef.current) return;
-
-        // Only auto-scroll if not hovered
-        if (!isHovered) {
-            scrollPosRef.current -= speedRef.current;
-        }
-
-        const trackWidth = trackRef.current.scrollWidth;
-        const halfWidth = trackWidth / 2;
-
-        // Reset position for infinite loop
-        if (Math.abs(scrollPosRef.current) >= halfWidth) {
-            scrollPosRef.current = 0;
-        }
-        // Handle positive scroll (manual prev button)
-        if (scrollPosRef.current > 0) {
-            scrollPosRef.current = -halfWidth;
-        }
-
-        trackRef.current.style.transform = `translateX(${scrollPosRef.current}px)`;
-        requestRef.current = requestAnimationFrame(animate);
+    // Keep isHovered in a ref for the animation loop
+    const isHoveredRef = useRef(isHovered);
+    useEffect(() => {
+        isHoveredRef.current = isHovered;
     }, [isHovered]);
 
     useEffect(() => {
-        requestRef.current = requestAnimationFrame(animate);
-        return () => cancelAnimationFrame(requestRef.current);
-    }, [animate]);
+        let animationFrameId;
+
+        const animate = () => {
+            if (!trackRef.current) return;
+
+            // Use ref for current hover state
+            if (!isHoveredRef.current) {
+                scrollPosRef.current -= speedRef.current;
+            }
+
+            const trackWidth = trackRef.current.scrollWidth;
+            const halfWidth = trackWidth / 2;
+
+            // Reset position for infinite loop
+            if (Math.abs(scrollPosRef.current) >= halfWidth) {
+                scrollPosRef.current = 0;
+            }
+            // Handle positive scroll (manual prev button)
+            if (scrollPosRef.current > 0) {
+                scrollPosRef.current = -halfWidth;
+            }
+
+            trackRef.current.style.transform = `translateX(${scrollPosRef.current}px)`;
+            animationFrameId = requestAnimationFrame(animate);
+        };
+
+        animationFrameId = requestAnimationFrame(animate);
+        return () => cancelAnimationFrame(animationFrameId);
+    }, [images.length]);
 
     const handlePrev = () => {
         const itemWidth = 400 + 24; // Width + gap (approx 1.5rem = 24px)
@@ -67,6 +79,23 @@ export default function Gallery() {
     const handleNext = () => {
         const itemWidth = 400 + 24;
         scrollPosRef.current -= itemWidth;
+    };
+
+    const handleTouchStart = (e) => {
+        setIsHovered(true);
+        touchStart.current = e.touches[0].clientX;
+        lastTouch.current = e.touches[0].clientX;
+    };
+
+    const handleTouchMove = (e) => {
+        const currentTouch = e.touches[0].clientX;
+        const delta = currentTouch - lastTouch.current;
+        scrollPosRef.current += delta;
+        lastTouch.current = currentTouch;
+    };
+
+    const handleTouchEnd = () => {
+        setIsHovered(false);
     };
 
     if (images.length === 0) return null;
@@ -84,7 +113,13 @@ export default function Gallery() {
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
             >
-                <div className={styles.track} ref={trackRef}>
+                <div
+                    className={styles.track}
+                    ref={trackRef}
+                    onTouchStart={handleTouchStart}
+                    onTouchMove={handleTouchMove}
+                    onTouchEnd={handleTouchEnd}
+                >
                     {carouselImages.map((src, index) => (
                         <div key={`${src}-${index}`} className={styles.item}>
                             <Image

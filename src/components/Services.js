@@ -18,8 +18,13 @@ const services = [
     },
     {
         title: "Floral Decor",
-        description: "Stunning floral arrangements to elevate any venue.",
+        description: "Stunning floral arrangements to elevate any venue. From elegant centerpieces to breathtaking installations.",
         icon: "🌸"
+    },
+    {
+        title: "Graduation Parties",
+        description: "From intimate ceremonies to grand celebrations, we orchestrate every detail.",
+        icon: "🎓"
     }
 ];
 

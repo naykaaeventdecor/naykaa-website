@@ -23,7 +23,7 @@ export default function Hero() {
                 </p>
                 <div className={styles.actions}>
                     <a href="#contact" className="btn btn-primary">Book Now</a>
-                    <a href="#gallery" className={styles.secondaryBtn}>View Gallery</a>
+                    <a href="/gallery" className={styles.secondaryBtn}>View Gallery</a>
                 </div>
             </div>
         </section>

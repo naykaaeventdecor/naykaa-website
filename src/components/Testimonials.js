@@ -59,7 +59,7 @@ export default function Testimonials() {
                                 <span key={i} className={styles.star}>★</span>
                             ))}
                         </div>
-                        <p className={styles.text}>"{current.text}"</p>
+                        <p className={styles.text}>&quot;{current.text}&quot;</p>
                         <div className={styles.author}>
                             <h4 className={styles.name}>{current.name}</h4>
                             <p className={styles.event}>{current.event}</p>

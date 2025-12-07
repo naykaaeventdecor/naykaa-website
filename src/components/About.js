@@ -6,9 +6,8 @@ export default function About() {
         <section id="about" className={styles.about}>
             <div className={styles.container}>
                 <h2 className={styles.title}>Our Story</h2>
-                <p className={styles.intro}>
-                    At Naykaa Event and Decor, we believe in the power of women's entrepreneurship to transform the event industry.
-                    Founded with a passion for creativity and a commitment to excellence, we bring a unique touch to every celebration.
+                <p className={styles.description}>
+                    At Naykaa Event & Decor, we believe that every celebration tells a story. Founded with a passion for creativity and an eye for detail, we&apos;ve dedicated ourselves to transforming ordinary spaces into extraordinary experiences.
                 </p>
 
                 <div className={styles.profiles}>

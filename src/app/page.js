@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import IntroAnimation from "@/components/IntroAnimation";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
@@ -19,8 +19,10 @@ export default function Home() {
     const hasSeenIntro = window.sessionStorage.getItem("introShown") === "true";
 
     if (hasSeenIntro) {
-      setAnimationStarted(true);
-      setShouldShowIntro(false);
+      setTimeout(() => {
+        setAnimationStarted(true);
+        setShouldShowIntro(false);
+      }, 0);
     }
   }, []);
 
